@@ -9,7 +9,6 @@ namespace Spryker\Zed\ProductSetGui\Communication\Table;
 
 use Generated\Shared\Transfer\LocaleTransfer;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
-use Spryker\Service\UtilText\Model\Url\Url;
 use Spryker\Zed\Gui\Communication\Table\AbstractTable;
 use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
 use Spryker\Zed\ProductSetGui\Communication\Controller\AbstractProductSetController;
@@ -17,16 +16,18 @@ use Spryker\Zed\ProductSetGui\Communication\Table\Helper\ProductAbstractTableHel
 use Spryker\Zed\ProductSetGui\Persistence\ProductSetGuiQueryContainer;
 use Spryker\Zed\ProductSetGui\Persistence\ProductSetGuiQueryContainerInterface;
 
-class ProductAbstractSetViewTable extends AbstractTable
+class ProductAbstractSetUpdateTable extends AbstractTable
 {
 
-    const TABLE_IDENTIFIER = 'product-abstract-set-view-table';
-
+    const TABLE_IDENTIFIER = 'product-abstract-set-table';
     const COL_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
-    const COL_IMAGE = 'image';
-    const COL_DETAILS = 'details';
+    const COL_PREVIEW = 'preview';
+    const COL_SKU = 'sku';
     const COL_NAME = ProductSetGuiQueryContainer::COL_ALIAS_NAME;
+    const COL_PRICE = 'price';
+    const COL_STATUS = 'status';
     const COL_ORDER = ProductSetGuiQueryContainer::COL_ALIAS_POSITION;
+    const COL_CHECKBOX = 'checkbox';
 
     /**
      * @var \Spryker\Zed\ProductSetGui\Persistence\ProductSetGuiQueryContainerInterface
@@ -34,7 +35,7 @@ class ProductAbstractSetViewTable extends AbstractTable
     protected $productSetGuiQueryContainer;
 
     /**
-     * @var \Spryker\Zed\ProductSetGui\Communication\Table\Helper\ProductAbstractTableHelperInterface
+     * @var \Spryker\Zed\ProductSetGui\Communication\Table\Helper\ProductAbstractTableHelperInterface $productAbstractTableHelper
      */
     protected $productAbstractTableHelper;
 
@@ -61,9 +62,9 @@ class ProductAbstractSetViewTable extends AbstractTable
         $idProductSet
     ) {
         $this->productSetGuiQueryContainer = $productSetGuiQueryContainer;
+        $this->productAbstractTableHelper = $productAbstractTableHelper;
         $this->localeTransfer = $localeTransfer;
         $this->idProductSet = $idProductSet;
-        $this->productAbstractTableHelper = $productAbstractTableHelper;
     }
 
     /**
@@ -77,23 +78,35 @@ class ProductAbstractSetViewTable extends AbstractTable
         $this->defaultUrl = static::TABLE_IDENTIFIER . $urlSuffix;
         $this->setTableIdentifier(static::TABLE_IDENTIFIER);
 
-        $this->disableSearch();
-
         $config->setHeader([
             static::COL_ID_PRODUCT_ABSTRACT => 'ID',
-            static::COL_IMAGE => 'Preview',
-            static::COL_DETAILS => 'Product details',
+            static::COL_PREVIEW => 'Preview',
+            static::COL_SKU => 'SKU',
+            static::COL_NAME => 'Name',
+            static::COL_PRICE => 'Price',
+            static::COL_STATUS => 'Status',
             static::COL_ORDER => 'Order',
+            static::COL_CHECKBOX => 'Selected',
         ]);
 
         $config->setSortable([
             static::COL_ID_PRODUCT_ABSTRACT,
+            static::COL_SKU,
+            static::COL_NAME,
             static::COL_ORDER,
         ]);
 
+        $config->setSearchable([
+            static::COL_ID_PRODUCT_ABSTRACT,
+            static::COL_SKU,
+            static::COL_NAME,
+        ]);
+
         $config->setRawColumns([
-            static::COL_IMAGE,
-            static::COL_DETAILS,
+            static::COL_PREVIEW,
+            static::COL_CHECKBOX,
+            static::COL_STATUS,
+            static::COL_ORDER,
         ]);
 
         $config->setDefaultSortField(static::COL_ORDER, TableConfiguration::SORT_ASC);
@@ -130,9 +143,13 @@ class ProductAbstractSetViewTable extends AbstractTable
     {
         return [
             static::COL_ID_PRODUCT_ABSTRACT => $productAbstractEntity->getIdProductAbstract(),
-            static::COL_IMAGE => $this->productAbstractTableHelper->getProductPreview($productAbstractEntity),
-            static::COL_DETAILS => $this->generateDetailsColumn($productAbstractEntity),
-            static::COL_ORDER => $productAbstractEntity->getVirtualColumn(static::COL_ORDER),
+            static::COL_PREVIEW => $this->productAbstractTableHelper->getProductPreview($productAbstractEntity),
+            static::COL_SKU => $productAbstractEntity->getSku(),
+            static::COL_NAME => $productAbstractEntity->getVirtualColumn(static::COL_NAME),
+            static::COL_PRICE => $this->productAbstractTableHelper->getProductPrice($productAbstractEntity),
+            static::COL_STATUS => $this->productAbstractTableHelper->getAbstractProductStatusLabel($productAbstractEntity),
+            static::COL_ORDER => $this->getOrderField($productAbstractEntity),
+            static::COL_CHECKBOX => $this->getSelectField($productAbstractEntity),
         ];
     }
 
@@ -141,24 +158,26 @@ class ProductAbstractSetViewTable extends AbstractTable
      *
      * @return string
      */
-    protected function generateDetailsColumn(SpyProductAbstract $productAbstractEntity)
+    protected function getOrderField(SpyProductAbstract $productAbstractEntity)
     {
-        $rawContent = '<p>' .
-            '<strong><a href="%s">%s</a></strong><br />' .
-            '<small>SKU: %s</small><br/>' .
-            '<small>Price: %s</small>' .
-            '</p> %s';
-
-        $content = sprintf(
-            $rawContent,
-            Url::generate('/product-management/view', ['id-product-abstract' => $productAbstractEntity->getIdProductAbstract()])->build(),
-            $productAbstractEntity->getVirtualColumn(static::COL_NAME),
-            $productAbstractEntity->getSku(),
-            $this->productAbstractTableHelper->getProductPrice($productAbstractEntity),
-            $this->productAbstractTableHelper->getAbstractProductStatusLabel($productAbstractEntity)
+        return sprintf(
+            '<input type="text" value="%2$d" id="product_order_%1$d" class="product_order" size="4" data-id="%1$s">',
+            $productAbstractEntity->getIdProductAbstract(),
+            $productAbstractEntity->getVirtualColumn(static::COL_ORDER)
         );
+    }
 
-        return $content;
+    /**
+     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
+     *
+     * @return string
+     */
+    protected function getSelectField(SpyProductAbstract $productAbstractEntity)
+    {
+        return sprintf(
+            '<input id="product_checkbox_%1$d" class="product_checkbox" type="checkbox" checked="checked" data-id="%1$s">',
+            $productAbstractEntity->getIdProductAbstract()
+        );
     }
 
 }
