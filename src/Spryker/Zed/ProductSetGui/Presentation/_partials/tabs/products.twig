@@ -1,9 +1,7 @@
 <div class="tabs-container">
     <ul class="nav nav-tabs">
-        {# @deprecated html attribute "data-toggle" is deprecated use "data-bs-toggle" instead #}
-        <li class="active" data-bs-toggle="tab" data-bs-target="#tab-content-products-1"><a data-toggle="tab" href="#tab-content-products-1">{{ 'Select products to assign' | trans }}</a></li>
-        {# @deprecated html attribute "data-toggle" is deprecated use "data-bs-toggle" instead #}
-        <li data-bs-toggle="tab" data-bs-target="#tab-content-products-2"><a data-toggle="tab" href="#tab-content-products-2" id="assigned-tab-label">{{ 'Products to be assigned' | trans }}</a></li>
+        <li class="active" data-bs-toggle="tab" data-bs-target="#tab-content-products-1"><a href="#tab-content-products-1">{{ 'Select products to assign' | trans }}</a></li>
+        <li data-bs-toggle="tab" data-bs-target="#tab-content-products-2"><a href="#tab-content-products-2" id="assigned-tab-label">{{ 'Products to be assigned' | trans }}</a></li>
     </ul>
     <div class="tab-content">
         <div id="tab-content-products-1" class="tab-pane active">
@@ -39,10 +37,8 @@
 {% if productAbstractSetTable is defined %}
     <div class="tabs-container">
         <ul class="nav nav-tabs">
-            {# @deprecated html attribute "data-toggle" is deprecated use "data-bs-toggle" instead #}
-            <li class="active" data-bs-toggle="tab" data-bs-target="#tab-content-products-3"><a data-toggle="tab" href="#tab-content-products-3">{{ 'Products in this Set' | trans }}</a></li>
-            {# @deprecated html attribute "data-toggle" is deprecated use "data-bs-toggle" instead #}
-            <li data-bs-toggle="tab" data-bs-target="#tab-content-products-4"><a data-toggle="tab" href="#tab-content-products-4" id="deassigned-tab-label">{{ 'Products to be deassigned' | trans }}</a></li>
+            <li class="active" data-bs-toggle="tab" data-bs-target="#tab-content-products-3"><a href="#tab-content-products-3">{{ 'Products in this Set' | trans }}</a></li>
+            <li data-bs-toggle="tab" data-bs-target="#tab-content-products-4"><a href="#tab-content-products-4" id="deassigned-tab-label">{{ 'Products to be deassigned' | trans }}</a></li>
         </ul>
         <div class="tab-content">
             <div id="tab-content-products-3" class="tab-pane active">
