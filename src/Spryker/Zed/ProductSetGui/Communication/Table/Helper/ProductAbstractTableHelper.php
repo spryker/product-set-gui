@@ -89,6 +89,6 @@ class ProductAbstractTableHelper implements ProductAbstractTableHelperInterface
             return '<span class="label label-danger">Inactive</span>';
         }
 
-        return '<span class="label label-info">Active</span>';
+        return '<span class="label label-primary">Active</span>';
     }
 }
