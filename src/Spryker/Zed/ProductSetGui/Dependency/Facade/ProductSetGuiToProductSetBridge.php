@@ -24,41 +24,21 @@ class ProductSetGuiToProductSetBridge implements ProductSetGuiToProductSetInterf
         $this->productSetFacade = $productSetFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductSetTransfer
-     */
     public function createProductSet(ProductSetTransfer $productSetTransfer): ProductSetTransfer
     {
         return $this->productSetFacade->createProductSet($productSetTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductSetTransfer|null
-     */
     public function findProductSet(ProductSetTransfer $productSetTransfer): ?ProductSetTransfer
     {
         return $this->productSetFacade->findProductSet($productSetTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductSetTransfer
-     */
     public function updateProductSet(ProductSetTransfer $productSetTransfer): ProductSetTransfer
     {
         return $this->productSetFacade->updateProductSet($productSetTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return void
-     */
     public function deleteProductSet(ProductSetTransfer $productSetTransfer): void
     {
         $this->productSetFacade->deleteProductSet($productSetTransfer);

@@ -88,11 +88,6 @@ class ProductTable extends AbstractTable
         $this->idProductSetGuiGroup = (int)$idProductSetGuiGroup;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $urlSuffix = $this->idProductSetGuiGroup ? sprintf('?%s=%d', AbstractProductSetController::PARAM_ID, $this->idProductSetGuiGroup) : null;
@@ -134,11 +129,6 @@ class ProductTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $query = $this->productSetGuiQueryContainer->queryProductAbstractForAssignment($this->idProductSetGuiGroup, $this->localeTransfer);
@@ -153,11 +143,6 @@ class ProductTable extends AbstractTable
         return $results;
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return array
-     */
     protected function formatRow(SpyProductAbstract $productAbstractEntity): array
     {
         $row = [
@@ -172,11 +157,6 @@ class ProductTable extends AbstractTable
         return $row;
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return string
-     */
     protected function getSelectField(SpyProductAbstract $productAbstractEntity): string
     {
         $checkbox_html = sprintf(

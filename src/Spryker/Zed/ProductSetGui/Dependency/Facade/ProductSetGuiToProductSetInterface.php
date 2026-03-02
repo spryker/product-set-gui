@@ -11,32 +11,12 @@ use Generated\Shared\Transfer\ProductSetTransfer;
 
 interface ProductSetGuiToProductSetInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductSetTransfer
-     */
     public function createProductSet(ProductSetTransfer $productSetTransfer): ProductSetTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductSetTransfer|null
-     */
     public function findProductSet(ProductSetTransfer $productSetTransfer): ?ProductSetTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductSetTransfer
-     */
     public function updateProductSet(ProductSetTransfer $productSetTransfer): ProductSetTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return void
-     */
     public function deleteProductSet(ProductSetTransfer $productSetTransfer): void;
 
     /**

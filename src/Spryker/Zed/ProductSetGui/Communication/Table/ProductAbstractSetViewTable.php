@@ -87,11 +87,6 @@ class ProductAbstractSetViewTable extends AbstractTable
         $this->productAbstractTableHelper = $productAbstractTableHelper;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $urlSuffix = sprintf('?%s=%d', AbstractProductSetController::PARAM_ID, $this->idProductSet);
@@ -123,11 +118,6 @@ class ProductAbstractSetViewTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $query = $this->productSetGuiQueryContainer->queryProductAbstractByIdProductSet($this->idProductSet, $this->localeTransfer);
@@ -142,11 +132,6 @@ class ProductAbstractSetViewTable extends AbstractTable
         return $results;
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return array
-     */
     protected function formatRow(SpyProductAbstract $productAbstractEntity): array
     {
         return [
@@ -157,11 +142,6 @@ class ProductAbstractSetViewTable extends AbstractTable
         ];
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return string
-     */
     protected function generateDetailsColumn(SpyProductAbstract $productAbstractEntity): string
     {
         $rawContentParts = [];

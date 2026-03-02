@@ -11,9 +11,6 @@ use Generated\Shared\Transfer\LocaleTransfer;
 
 interface ProductSetGuiToLocaleInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getCurrentLocale(): LocaleTransfer;
 
     /**
@@ -21,8 +18,5 @@ interface ProductSetGuiToLocaleInterface
      */
     public function getLocaleCollection(): array;
 
-    /**
-     * @return string
-     */
     public function getCurrentLocaleName(): string;
 }

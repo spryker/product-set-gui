@@ -35,11 +35,6 @@ class ProductSetGuiToMoneyBridge implements ProductSetGuiToMoneyInterface
         return $this->moneyFacade->fromInteger($amount, $isoCode);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MoneyTransfer $moneyTransfer
-     *
-     * @return string
-     */
     public function formatWithSymbol(MoneyTransfer $moneyTransfer): string
     {
         return $this->moneyFacade->formatWithSymbol($moneyTransfer);

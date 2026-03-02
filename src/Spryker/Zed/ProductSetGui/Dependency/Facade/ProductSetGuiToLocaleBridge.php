@@ -24,9 +24,6 @@ class ProductSetGuiToLocaleBridge implements ProductSetGuiToLocaleInterface
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getCurrentLocale(): LocaleTransfer
     {
         return $this->localeFacade->getCurrentLocale();
@@ -40,9 +37,6 @@ class ProductSetGuiToLocaleBridge implements ProductSetGuiToLocaleInterface
         return $this->localeFacade->getLocaleCollection();
     }
 
-    /**
-     * @return string
-     */
     public function getCurrentLocaleName(): string
     {
         return $this->localeFacade->getCurrentLocaleName();

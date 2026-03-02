@@ -97,11 +97,6 @@ class ProductAbstractSetUpdateTable extends AbstractTable
         $this->idProductSet = $idProductSet;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $urlSuffix = sprintf('?%s=%d', AbstractProductSetController::PARAM_ID, $this->idProductSet);
@@ -188,11 +183,6 @@ class ProductAbstractSetUpdateTable extends AbstractTable
         return $row;
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return string
-     */
     protected function getPositionField(SpyProductAbstract $productAbstractEntity): string
     {
         $idProductAbstract = $productAbstractEntity->getIdProductAbstract();
@@ -211,11 +201,6 @@ class ProductAbstractSetUpdateTable extends AbstractTable
         );
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return string
-     */
     protected function getSelectField(SpyProductAbstract $productAbstractEntity): string
     {
         return sprintf(

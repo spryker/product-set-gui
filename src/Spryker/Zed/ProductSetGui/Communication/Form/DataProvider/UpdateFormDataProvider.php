@@ -36,11 +36,6 @@ class UpdateFormDataProvider extends AbstractProductSetFormDataProvider
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductSetGui\Dependency\Facade\ProductSetGuiToProductSetInterface $productSetFacade
-     * @param \Spryker\Zed\ProductSetGui\Dependency\Facade\ProductSetGuiToLocaleInterface $localeFacade
-     * @param \Spryker\Zed\ProductSetGui\ProductSetGuiConfig $productSetGuiConfig
-     */
     public function __construct(
         ProductSetGuiToProductSetInterface $productSetFacade,
         ProductSetGuiToLocaleInterface $localeFacade,
@@ -83,11 +78,6 @@ class UpdateFormDataProvider extends AbstractProductSetFormDataProvider
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return array
-     */
     protected function getGeneralFormData(ProductSetTransfer $productSetTransfer): array
     {
         return [
@@ -100,11 +90,6 @@ class UpdateFormDataProvider extends AbstractProductSetFormDataProvider
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return array
-     */
     protected function getProductsFormData(ProductSetTransfer $productSetTransfer): array
     {
         return [
@@ -113,11 +98,6 @@ class UpdateFormDataProvider extends AbstractProductSetFormDataProvider
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return array
-     */
     protected function getLocalizedGeneralFormCollectionData(ProductSetTransfer $productSetTransfer): array
     {
         $result = [];
@@ -148,11 +128,6 @@ class UpdateFormDataProvider extends AbstractProductSetFormDataProvider
         return $result;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return array
-     */
     protected function getSeoFormData(ProductSetTransfer $productSetTransfer): array
     {
         return [
@@ -160,11 +135,6 @@ class UpdateFormDataProvider extends AbstractProductSetFormDataProvider
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return array
-     */
     protected function getLocalizedSeoFormCollectionData(ProductSetTransfer $productSetTransfer): array
     {
         $result = [];
@@ -205,11 +175,6 @@ class UpdateFormDataProvider extends AbstractProductSetFormDataProvider
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     *
-     * @return array
-     */
     protected function getImagesFormData(ProductSetTransfer $productSetTransfer): array
     {
         $results = [];
@@ -223,12 +188,6 @@ class UpdateFormDataProvider extends AbstractProductSetFormDataProvider
         return $results;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductSetTransfer $productSetTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer|null $localeTransfer
-     *
-     * @return array
-     */
     protected function getImageSetFormData(ProductSetTransfer $productSetTransfer, ?LocaleTransfer $localeTransfer = null): array
     {
         $idLocale = $localeTransfer ? $localeTransfer->getIdLocale() : null;
@@ -292,12 +251,6 @@ class UpdateFormDataProvider extends AbstractProductSetFormDataProvider
         return $result;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductImageTransfer $productImageTransfer
-     * @param array $productImageData
-     *
-     * @return array
-     */
     protected function setImagePreviewData(ProductImageTransfer $productImageTransfer, array $productImageData): array
     {
         $productImageData[ProductImageFormType::FIELD_IMAGE_PREVIEW] = $productImageTransfer->getExternalUrlSmall();

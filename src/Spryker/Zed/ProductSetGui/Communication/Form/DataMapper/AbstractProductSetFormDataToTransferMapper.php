@@ -29,9 +29,6 @@ abstract class AbstractProductSetFormDataToTransferMapper
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductSetGui\Dependency\Facade\ProductSetGuiToLocaleInterface $localeFacade
-     */
     public function __construct(ProductSetGuiToLocaleInterface $localeFacade)
     {
         $this->localeFacade = $localeFacade;

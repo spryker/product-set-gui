@@ -68,10 +68,6 @@ class ProductSetTable extends AbstractTable
      */
     protected $localeTransfer;
 
-    /**
-     * @param \Spryker\Zed\ProductSetGui\Persistence\ProductSetGuiQueryContainerInterface $productSetGuiQueryContainer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     */
     public function __construct(ProductSetGuiQueryContainerInterface $productSetGuiQueryContainer, LocaleTransfer $localeTransfer)
     {
         $this->productSetGuiQueryContainer = $productSetGuiQueryContainer;

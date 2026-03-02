@@ -61,10 +61,6 @@ class ProductSetReorderTable extends AbstractTable
      */
     protected $localeTransfer;
 
-    /**
-     * @param \Spryker\Zed\ProductSetGui\Persistence\ProductSetGuiQueryContainerInterface $productSetGuiQueryContainer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     */
     public function __construct(ProductSetGuiQueryContainerInterface $productSetGuiQueryContainer, LocaleTransfer $localeTransfer)
     {
         $this->productSetGuiQueryContainer = $productSetGuiQueryContainer;
@@ -226,11 +222,6 @@ class ProductSetReorderTable extends AbstractTable
         );
     }
 
-    /**
-     * @param \Orm\Zed\ProductSet\Persistence\SpyProductSet $productAbstractEntity
-     *
-     * @return string
-     */
     protected function getWeightField(SpyProductSet $productAbstractEntity): string
     {
         $idProductSet = $productAbstractEntity->getIdProductSet();

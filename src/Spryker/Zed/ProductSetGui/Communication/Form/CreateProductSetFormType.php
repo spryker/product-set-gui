@@ -47,9 +47,6 @@ class CreateProductSetFormType extends AbstractType
      */
     public const OPTION_LOCALE = 'locale';
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'product_set_form';
@@ -65,11 +62,6 @@ class CreateProductSetFormType extends AbstractType
         return $this->getBlockPrefix();
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);

@@ -93,9 +93,6 @@ class ProductImageFormType extends AbstractType
      */
     protected const OPTION_LOCALE = 'locale';
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'product_image_collection';
@@ -129,11 +126,6 @@ class ProductImageFormType extends AbstractType
             ->addSortOrderField($builder, $options);
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);

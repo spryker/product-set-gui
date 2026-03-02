@@ -24,9 +24,6 @@ class ProductSetGuiToProductSetBridge implements ProductSetGuiToProductSetInterf
         $this->productSetQueryContainer = $productSetQueryContainer;
     }
 
-    /**
-     * @return \Orm\Zed\ProductSet\Persistence\SpyProductSetQuery
-     */
     public function queryProductSet(): SpyProductSetQuery
     {
         return $this->productSetQueryContainer->queryProductSet();

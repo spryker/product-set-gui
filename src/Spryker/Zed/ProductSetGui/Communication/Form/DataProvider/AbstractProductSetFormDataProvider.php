@@ -17,9 +17,6 @@ abstract class AbstractProductSetFormDataProvider
      */
     protected $productSetGuiConfig;
 
-    /**
-     * @param \Spryker\Zed\ProductSetGui\ProductSetGuiConfig $productSetGuiConfig
-     */
     public function __construct(ProductSetGuiConfig $productSetGuiConfig)
     {
         $this->productSetGuiConfig = $productSetGuiConfig;

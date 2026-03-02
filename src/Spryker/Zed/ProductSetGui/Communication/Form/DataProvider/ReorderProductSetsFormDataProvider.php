@@ -17,9 +17,6 @@ class ReorderProductSetsFormDataProvider
      */
     protected $productSetGuiQueryContainer;
 
-    /**
-     * @param \Spryker\Zed\ProductSetGui\Persistence\ProductSetGuiQueryContainerInterface $productSetGuiQueryContainer
-     */
     public function __construct(ProductSetGuiQueryContainerInterface $productSetGuiQueryContainer)
     {
         $this->productSetGuiQueryContainer = $productSetGuiQueryContainer;

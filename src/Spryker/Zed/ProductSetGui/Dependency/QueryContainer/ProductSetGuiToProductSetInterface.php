@@ -11,8 +11,5 @@ use Orm\Zed\ProductSet\Persistence\SpyProductSetQuery;
 
 interface ProductSetGuiToProductSetInterface
 {
-    /**
-     * @return \Orm\Zed\ProductSet\Persistence\SpyProductSetQuery
-     */
     public function queryProductSet(): SpyProductSetQuery;
 }

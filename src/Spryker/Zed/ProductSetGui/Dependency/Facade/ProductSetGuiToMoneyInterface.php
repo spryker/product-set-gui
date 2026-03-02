@@ -19,10 +19,5 @@ interface ProductSetGuiToMoneyInterface
      */
     public function fromInteger($amount, $isoCode = null): MoneyTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\MoneyTransfer $moneyTransfer
-     *
-     * @return string
-     */
     public function formatWithSymbol(MoneyTransfer $moneyTransfer): string;
 }

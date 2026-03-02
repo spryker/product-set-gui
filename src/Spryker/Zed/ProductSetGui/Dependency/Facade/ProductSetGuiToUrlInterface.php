@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\UrlTransfer;
 
 interface ProductSetGuiToUrlInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return bool
-     */
     public function hasUrlCaseInsensitive(UrlTransfer $urlTransfer): bool;
 }

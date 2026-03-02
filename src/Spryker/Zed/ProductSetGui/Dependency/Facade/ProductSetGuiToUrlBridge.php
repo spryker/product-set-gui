@@ -24,11 +24,6 @@ class ProductSetGuiToUrlBridge implements ProductSetGuiToUrlInterface
         $this->urlFacade = $urlFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return bool
-     */
     public function hasUrlCaseInsensitive(UrlTransfer $urlTransfer): bool
     {
         return $this->urlFacade->hasUrlCaseInsensitive($urlTransfer);

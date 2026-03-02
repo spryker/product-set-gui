@@ -24,10 +24,6 @@ class CreateFormDataProvider extends AbstractProductSetFormDataProvider
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductSetGui\Dependency\Facade\ProductSetGuiToLocaleInterface $localeFacade
-     * @param \Spryker\Zed\ProductSetGui\ProductSetGuiConfig $productSetGuiConfig
-     */
     public function __construct(ProductSetGuiToLocaleInterface $localeFacade, ProductSetGuiConfig $productSetGuiConfig)
     {
         parent::__construct($productSetGuiConfig);
@@ -35,9 +31,6 @@ class CreateFormDataProvider extends AbstractProductSetFormDataProvider
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @return array
-     */
     public function getData(): array
     {
         return [
@@ -57,9 +50,6 @@ class CreateFormDataProvider extends AbstractProductSetFormDataProvider
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getGeneralFormData(): array
     {
         return [
@@ -67,9 +57,6 @@ class CreateFormDataProvider extends AbstractProductSetFormDataProvider
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getSeoFormData(): array
     {
         return [
@@ -77,9 +64,6 @@ class CreateFormDataProvider extends AbstractProductSetFormDataProvider
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getImagesFormData(): array
     {
         $results = [];
@@ -93,9 +77,6 @@ class CreateFormDataProvider extends AbstractProductSetFormDataProvider
         return $results;
     }
 
-    /**
-     * @return array
-     */
     protected function getLocalizedFormCollectionData(): array
     {
         $results = [];
@@ -111,11 +92,6 @@ class CreateFormDataProvider extends AbstractProductSetFormDataProvider
         return $results;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\LocaleTransfer|null $localeTransfer
-     *
-     * @return array
-     */
     protected function getImagesDefaultFields(?LocaleTransfer $localeTransfer = null): array
     {
         return [

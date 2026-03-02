@@ -17,9 +17,6 @@ class ProductAbstractTableHelper implements ProductAbstractTableHelperInterface
      */
     protected $productImageFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductSetGui\Dependency\Facade\ProductSetGuiToProductImageInterface $productImageFacade
-     */
     public function __construct(ProductSetGuiToProductImageInterface $productImageFacade)
     {
         $this->productImageFacade = $productImageFacade;
