@@ -49,13 +49,13 @@ class ProductsFormType extends AbstractType
                 'id' => static::FIELD_ASSIGN_ID_PRODUCT_ABSTRACTS,
             ],
             'constraints' => [
-                new Callback([
-                    'callback' => function (array $productAbstractIds, ExecutionContextInterface $context) {
+                new Callback(
+                    callback: function (array $productAbstractIds, ExecutionContextInterface $context) {
                         if (count($productAbstractIds) < 2) {
                             $context->addViolation('You need to select a minimum of 2 products.');
                         }
                     },
-                ]),
+                ),
             ],
         ]);
 

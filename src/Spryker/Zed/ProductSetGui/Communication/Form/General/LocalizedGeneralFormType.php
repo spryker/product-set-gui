@@ -84,10 +84,10 @@ class LocalizedGeneralFormType extends AbstractType
                 return [Constraint::DEFAULT_GROUP];
             },
             'constraints' => [
-                new Callback([
-                    'callback' => [$this, 'validateUniqueUrl'],
-                    'groups' => [static::GROUP_UNIQUE_URL_CHECK],
-                ]),
+                new Callback(
+                    callback: [$this, 'validateUniqueUrl'],
+                    groups: [static::GROUP_UNIQUE_URL_CHECK],
+                ),
             ],
         ]);
     }

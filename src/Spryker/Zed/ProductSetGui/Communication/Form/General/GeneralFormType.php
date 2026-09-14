@@ -114,9 +114,9 @@ class GeneralFormType extends AbstractType
         $builder->add(static::FIELD_LOCALIZED_GENERAL_FORM_COLLECTION, CollectionType::class, [
             'entry_type' => LocalizedGeneralFormType::class,
             'constraints' => [
-                new Callback([
-                    'callback' => [$this, 'validateLocalizedUrls'],
-                ]),
+                new Callback(
+                    callback: [$this, 'validateLocalizedUrls'],
+                ),
             ],
         ]);
 
@@ -135,10 +135,10 @@ class GeneralFormType extends AbstractType
             'required' => true,
             'constraints' => [
                 new NotBlank(),
-                new Callback([
-                    'callback' => [$this, 'validateUniqueKey'],
-                    'groups' => [static::GROUP_UNIQUE_KEY_CHECK],
-                ]),
+                new Callback(
+                    callback: [$this, 'validateUniqueKey'],
+                    groups: [static::GROUP_UNIQUE_KEY_CHECK],
+                ),
             ],
         ]);
 
