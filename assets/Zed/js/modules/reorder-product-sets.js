@@ -6,20 +6,26 @@
 'use strict';
 
 var initFormattedNumber = require('ZedGuiModules/libs/formatted-number-input');
+var tableAccess = require('ZedGuiModules/libs/table/table-access');
 
 $(document).ready(function () {
     var $productSetWeightsField = $('#reorder_product_sets_form_product_set_weights');
     var productSetWeights = getProductSetWeights();
+    var productSetTable = document.querySelector('#product-set-reorder-table');
 
-    $('#product-set-reorder-table')
-        .DataTable()
-        .on('draw', function (event, settings) {
+    if (!productSetTable) {
+        return;
+    }
+
+    tableAccess.requestTable(productSetTable, function (handle) {
+        handle.on('draw', function () {
             initFormattedNumber();
 
             $('.product_set_weight').off('change').on('change', onProductSetWeightChange);
 
-            setProductSetWeightFieldsOnTableDraw(settings);
+            setProductSetWeightFieldsOnTableDraw(handle.rowsData());
         });
+    });
 
     /**
      * @returns {Object}
@@ -51,11 +57,13 @@ $(document).ready(function () {
     }
 
     /**
+     * @param {Array} rows - Rows of the table, each one an array of its cells.
+     *
      * @returns {void}
      */
-    function setProductSetWeightFieldsOnTableDraw(settings) {
-        for (var i = 0; i < settings.json.data.length; i++) {
-            var product = settings.json.data[i];
+    function setProductSetWeightFieldsOnTableDraw(rows) {
+        for (var i = 0; i < rows.length; i++) {
+            var product = rows[i];
             var idProduct = parseInt(product[0]);
 
             if (productSetWeights.hasOwnProperty(idProduct)) {
