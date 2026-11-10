@@ -31,7 +31,7 @@ class ProductAbstractTableHelper implements ProductAbstractTableHelperInterface
     {
         return sprintf(
             '<img src="%s">',
-            $this->getProductPreviewUrl($productAbstractEntity),
+            htmlspecialchars((string)$this->getProductPreviewUrl($productAbstractEntity), ENT_QUOTES, 'UTF-8'),
         );
     }
 

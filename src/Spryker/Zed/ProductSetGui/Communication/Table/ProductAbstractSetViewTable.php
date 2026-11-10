@@ -148,11 +148,11 @@ class ProductAbstractSetViewTable extends AbstractTable
         $rawContentParts[] = sprintf(
             '<strong><a href="%s">%s</a></strong>',
             Url::generate('/product-management/view', ['id-product-abstract' => $productAbstractEntity->getIdProductAbstract()])->build(),
-            $productAbstractEntity->getVirtualColumn(static::COL_NAME),
+            htmlspecialchars((string)$productAbstractEntity->getVirtualColumn(static::COL_NAME), ENT_QUOTES, 'UTF-8'),
         );
         $rawContentParts[] = sprintf(
             '<small>SKU: %s</small><br/>',
-            $productAbstractEntity->getSku(),
+            htmlspecialchars((string)$productAbstractEntity->getSku(), ENT_QUOTES, 'UTF-8'),
         );
 
         return '<p>' . implode('<br>', $rawContentParts) . '</p>'
