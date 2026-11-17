@@ -159,11 +159,11 @@ class ProductTable extends AbstractTable
 
     protected function getSelectField(SpyProductAbstract $productAbstractEntity): string
     {
-        $checkbox_html = sprintf(
+        $checkboxHtml = sprintf(
             '<input id="all_products_checkbox_%1$d" class="all-products-checkbox" type="checkbox" data-id="%1$s">',
             $productAbstractEntity->getIdProductAbstract(),
         );
 
-        return $checkbox_html;
+        return $checkboxHtml;
     }
 }
